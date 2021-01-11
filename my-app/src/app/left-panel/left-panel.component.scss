@@ -1,0 +1,56 @@
+.addIcon {
+    font-size: 38px;
+    cursor: pointer;
+    position: absolute;
+    padding-left: 12px;
+}
+
+.list-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    flex: 1;
+    padding: 5px;
+    .list-item {
+        display: flex;
+        align-items: center;
+        padding: 2px;
+    }
+}
+
+mat-icon {
+    cursor: pointer;
+}
+
+.recent {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.input-text {
+    width: 34%;
+    height: 35px;
+    border: none;
+    border-bottom: 3px solid gray;
+    outline: none;
+    font-size: 18px;
+}
+
+.matPosition{
+    position: relative;
+    top: 5px;
+}
+
+.styleData {
+    font-size: 16px;
+    border-bottom: 2px solid gray;
+}
+.selectCity {
+    cursor: pointer;
+}
+
+.error {
+    font-size: 14px;
+    color: red;
+}

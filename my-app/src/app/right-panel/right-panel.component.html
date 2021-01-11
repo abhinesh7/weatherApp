@@ -1,0 +1,61 @@
+<div class="container" *ngIf="cityDetailData">
+  <div class="title">
+    {{cityDetailData['city'].name | titlecase}}
+  </div>
+
+  <div>
+    <div class="bigIcon">
+      <img *ngIf="cityDetailData['list'][0].weather[0].icon"
+        [src]="getWeatherIconUrl(cityDetailData['list'][0].weather[0].icon, '4x')">
+    </div>
+    <div class="details">
+      <div>
+        <span style="font-weight: bold;"> Temperature :</span>
+        {{cityDetailData['list'][0].main.temp - 273 | number : '1.2-2'}} C
+      </div>
+      <div>
+        {{cityDetailData['list'][0].weather[0].description}}
+      </div>
+      <div>
+        <span style="font-weight: bold;"> Wind :</span> {{cityDetailData['list'][0].wind.speed}} ms,
+        {{cityDetailData['list'][0].wind.deg}} degree
+      </div>
+      <div>
+        <span style="font-weight: bold;"> Pressure :</span> {{cityDetailData['list'][0].main.pressure}}
+      </div>
+    </div>
+  </div>
+
+  <div class="tableDiv" *ngIf="cityDetailData">
+    <table style="width:100%">
+      <tr>
+        <th>Day 1</th>
+        <th>Day 2</th>
+        <th>Day 3</th>
+        <th>Day 4</th>
+        <th>Day 5</th>
+      </tr>
+      <tr>
+        <td>{{cityDetailData['list'][0].dt_txt | date : 'EEEE, MMMM d' }}</td>
+        <td>{{cityDetailData['list'][8].dt_txt | date : 'EEEE, MMMM d'}}</td>
+        <td>{{cityDetailData['list'][16].dt_txt| date : 'EEEE, MMMM d'}}</td>
+        <td>{{cityDetailData['list'][24].dt_txt | date : 'EEEE, MMMM d'}}</td>
+        <td>{{cityDetailData['list'][32].dt_txt | date : 'EEEE, MMMM d'}}</td>
+      </tr>
+      <tr>
+        <td><img [src]="getWeatherIconUrl(cityDetailData['list'][0].weather[0].icon, '2x')"></td>
+        <td><img [src]="getWeatherIconUrl(cityDetailData['list'][8].weather[0].icon, '2x')"></td>
+        <td><img [src]="getWeatherIconUrl(cityDetailData['list'][16].weather[0].icon, '2x')"></td>
+        <td><img [src]="getWeatherIconUrl(cityDetailData['list'][24].weather[0].icon, '2x')"></td>
+        <td><img [src]="getWeatherIconUrl(cityDetailData['list'][32].weather[0].icon, '2x')"></td>
+      </tr>
+      <tr>
+        <td>{{cityDetailData['list'][0].main.temp - 273 | number : '1.2-2'}} C</td>
+        <td>{{cityDetailData['list'][8].main.temp - 273 | number : '1.2-2'}} C</td>
+        <td>{{cityDetailData['list'][16].main.temp - 273 | number : '1.2-2'}} C</td>
+        <td>{{cityDetailData['list'][24].main.temp - 273 | number : '1.2-2'}} C</td>
+        <td>{{cityDetailData['list'][32].main.temp - 273 | number : '1.2-2'}} C</td>
+      </tr>
+    </table>
+  </div>
+</div>

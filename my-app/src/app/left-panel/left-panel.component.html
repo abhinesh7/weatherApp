@@ -1,0 +1,27 @@
+<div class="container">
+    <div>
+        <input type="text" class="input-text" (keyup.enter)="addCity(cityName)" placeholder="Type city name"
+            [(ngModel)]="cityName">
+        <mat-icon (click)="addCity(cityName)" class="addIcon">{{"add"}} </mat-icon>
+    </div>
+    <div class="error">{{errorMessage}}</div>
+
+    <div class="recent">
+        Recent Locations
+    </div>
+
+    <div *ngIf="cities.length>0" class="list-container">
+        <div class="list-item" *ngFor="let city of cities;let i=index">
+            <div class="styleData" *ngIf="city.city">
+                <span class="selectCity" (click)="refreshCityData(city.city)">
+                    {{city.city | titlecase}} - {{city.temp | number : '1.2-2'}} C {{city.desc}}
+                </span>
+                <mat-icon class="matPosition" (click)="refreshCityData(city.city)">{{"autorenew"}}</mat-icon>
+                <mat-icon class="matPosition" (click)="deleteCity(i)">{{"close"}}</mat-icon>
+            </div>
+        </div>
+    </div>
+    <div style="width:35%;">
+        <button style="float:right;position: relative;top: 20px;" (click)="clear()">Clear All</button>
+    </div>
+</div>
